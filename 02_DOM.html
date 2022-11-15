@@ -11,6 +11,10 @@
         padding: 20px;
         color: white !important;
       }
+      .sample {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: 900;
+      }
     </style>
   </head>
   <body>
@@ -23,11 +27,13 @@
     <br />
     <button onclick="setStyle();">set style</button>
     <button onclick="setStyleCSSText();">set style with CSS Text</button>
-    <button onclick="removeStyle();">Remove style</button>
+    <button onclick="removeStyle1();">Remove style with removeProperty()</button>
+    <button onclick="removeStyle2();">Remove style with null</button>
     <br />
     <button onclick="addClass();">Add Class</button>
     <button onclick="removeClass();">Remove Class</button>
     <button onclick="toggleClass();">Toggle Class</button>
+    <button onclick="replaceClass();">Replace Class</button>
     <br />
     <button onclick="getAttr();">Get Attribute</button>
     <button onclick="setAttr();">Set Attribute</button>
@@ -37,7 +43,7 @@
 
     <h1 id="heading">JavaScript HTML DOM Elements</h1>
 
-    <p id="paragraph" style="color: green" title="d kldgs dlkgs lg s;ghslkdg dslk">
+    <p id="paragraph" class="sample" style="color: green; text-decoration: underline;" title="d kldgs dlkgs lg s;ghslkdg dslk">
       This page teaches you how to <b>find</b> and access <i>HTML</i> elements in an HTML page.
     </p>
 
@@ -76,6 +82,7 @@
 
       console.log(document.querySelectorAll('#paragraph > b'));
       console.log(document.querySelectorAll('p'));
+      console.log(document.querySelectorAll('#paragraph'));
 
       /*
         element.property
@@ -117,11 +124,17 @@
       let setStyleCSSText = function() {
         element.style.cssText = 'text-align: center; font-family: arial; box-shadow: 0 0 4px 2px #ccc'
       }
-      let removeStyle = function () {
+      let removeStyle1 = function () {
         element.style.removeProperty('border-radius');
+      };
+      let removeStyle2 = function () {
+        // element.style.boxShadow = null
+        element.style.boxShadow = ''
+        element.style.fontFamily = ''
       };
 
       let addClass = function () {
+        console.log(element.classList)
         element.classList.add('test');
       };
       let removeClass = function () {
@@ -129,6 +142,9 @@
       };
       let toggleClass = function () {
         element.classList.toggle('test');
+      };
+      let replaceClass = function () {
+        element.classList.replace('sample', 'test')
       };
 
       let getAttr = function () {
@@ -161,6 +177,7 @@
       let setAttrValue = function () {
         document.getElementById('inp1').value = 'adkjfadkfagdkf';
       };
+      
     </script>
   </body>
 </html>
