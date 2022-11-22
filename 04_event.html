@@ -55,19 +55,24 @@
         showFullName: function () {
           /******* do somthing *****/
           if (this.onShowFullName !== null && typeof this.onShowFullName === 'function') {
-            return this.onShowFullName({fname:this.firstName, lanme:this.lastName});
+            let param = {
+              fname:this.firstName, 
+              lname:this.lastName
+            }
+
+            return this.onShowFullName(param);
+
           } else {
-            return 'please define fullName method';
+            return 'please define onShowFullName event';
           }
           /******* do somthing *****/
         },
       };
 
       student.onShowFullName = function (options) {
-        // return this.firstName + ' ' + this.lastName;
-        // return this.lastName + ', ' + this.firstName;
         console.log(options)
-        return options.fname + ' ' + options.lname;
+        // return options.fname + ' ' + options.lname;
+        return options.lname + ', ' + options.fname;
       };
 
       // student.onShowFullName = "dsds"
@@ -106,18 +111,27 @@
         this.classList.add('aniamte');
       };
 
-      // document.getElementById('inp1').onkeypress = function(e){
-      //   console.log(e)
-      //   e.returnValue = false
-      // }
+      document.getElementById('inp1').onkeypress = function(e){
+        console.log(e)
+        // e.returnValue = false
+
+        // if(e.keyCode >= 48 && e.keyCode <= 57){
+        //   e.returnValue = true
+        // }
+        // else{
+        //   e.returnValue = false
+        // }
+
+        e.returnValue = e.keyCode >= 48 && e.keyCode <= 57
+      }
 
       /*
         elemnt.addEventListener('event', function(e){})
       */
-      document.getElementById('inp1').addEventListener('keypress', function (e) {
-        console.log(e);
-        // e.returnValue = false;
-      });
+      // document.getElementById('inp1').addEventListener('keypress', function (e) {
+      //   console.log(e);
+      //   // e.returnValue = false;
+      // });
 
       document.getElementById('div2').onmousemove = function(e){
         // console.log(e)

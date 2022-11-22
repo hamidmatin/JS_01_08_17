@@ -101,9 +101,7 @@
         <div class="last-name title">Last Name</div>
         <div class="mark title">Mark</div>
       </div>
-      <div id="table-body">
-        
-      </div>
+      <div id="table-body"></div>
     </div>
 
     <script>
@@ -113,10 +111,10 @@
         this.mark = mark;
       };
 
-      document.getElementById('add').onclick = function () {
-        let firstNameElement = document.getElementById('fname');
-        let lastNameElement = document.getElementById('lname');
-        let markElement = document.getElementById('mark');
+      document.getElementById("add").onclick = function () {
+        let firstNameElement = document.getElementById("fname");
+        let lastNameElement = document.getElementById("lname");
+        let markElement = document.getElementById("mark");
 
         /**
          *
@@ -124,26 +122,36 @@
          *
          */
 
-        let student = new Student(firstNameElement.value, lastNameElement.value, markElement.value);
+        let student = new Student(
+          firstNameElement.value,
+          lastNameElement.value,
+          markElement.value
+        );
 
         // let row = '<div class="row">'
         // row += '<div class="first-name">' + student.firstName + '</div>'
         // row += '<div class="last-name">' + student.lastName + '</div>'
         // row += '<div class="mark">' + student.mark + '</div>'
         // row += '</div>'
-        
 
-        let row = '<div class="row"> \
-                    <div class="first-name">' + student.firstName + '</div> \
-                    <div class="last-name">' + student.lastName + '</div> \
-                    <div class="mark">' + student.mark + '</div>\
-                  </div>';
+        let row =
+          '<div class="row"> \
+                    <div class="first-name">' +
+          student.firstName +
+          '</div> \
+                    <div class="last-name">' +
+          student.lastName +
+          '</div> \
+                    <div class="mark">' +
+          student.mark +
+          "</div>\
+                  </div>";
 
-        document.getElementById('table-body').innerHTML += row;
+        document.getElementById("table-body").innerHTML += row;
 
-        firstNameElement.value = '';
-        lastNameElement.value = '';
-        markElement.value = '';
+        firstNameElement.value = "";
+        lastNameElement.value = "";
+        markElement.value = "";
 
         firstNameElement.focus();
       };
