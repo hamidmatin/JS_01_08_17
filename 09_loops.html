@@ -98,10 +98,10 @@
         }
       */
 
-    //   txt = "";
-    //   for (counter = 0; counter < 10; counter++) {
-    //     txt += "counter = " + counter + "<br>";
-    //   }
+      //   txt = "";
+      //   for (counter = 0; counter < 10; counter++) {
+      //     txt += "counter = " + counter + "<br>";
+      //   }
 
       for (counter = 0, txt = ""; counter < 10; counter++) {
         txt += "counter = " + counter + "<br>";
@@ -129,7 +129,7 @@
       document.getElementById("p8").innerHTML = person.fname;
 
       document.getElementById("p9").innerHTML = person["fname"];
-      let prop = "fname";
+      let prop = "age";
       document.getElementById("p10").innerHTML = person[prop];
 
       /********** The For/In Loop ********/
@@ -153,7 +153,13 @@
             item.....
         }
       */
-
+      
+      /*
+        for (i = 0, txt = ""; i < cars.length; i++) {
+          let car = cars[i];
+          txt += car + "<br>";
+        }
+      */
       txt = "";
       for (let car of cars) {
         txt += car + "<br>";
