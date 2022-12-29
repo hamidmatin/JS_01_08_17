@@ -9,7 +9,10 @@
       * {
         box-sizing: border-box;
       }
-     
+      h1.title {
+        text-align: center;
+      }
+
       .accordion {
         width: 350px;
         border: 1px solid gray;
@@ -61,9 +64,10 @@
     </style>
   </head>
   <body>
-    <div class="accordion" data-duration="300ms">
+    <h1 class="title">kjkdfkdjs</h1>
+    <div class="accordion" data-my-attr-sample="test" data-name="sdsds">
       <h3 class="title active">Title 1</h3>
-      <div class="content">
+      <div class="content c1 c2 c3">
         <div>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ad repudiandae iste odit
@@ -93,7 +97,7 @@
           <img src="images/54-1024x575.webp" alt="" class="image-fluid" />
         </div>
       </div>
-      <h3 class="title">Title 4</h3>
+      <h3 class="title active">Title 4</h3>
       <div class="content">
         <div>
           <p>
@@ -189,58 +193,67 @@
       /**
        * if(undefined) {...} => false
        * if(null) {...} => false
+       * if(0) {...} => false
+       * if('') {...} => false
        * if(any value) {...} => true
        */
-      const accordions = document.querySelectorAll('.accordion');
+      const accordions = document.querySelectorAll('.accordion')
       for (const accordion of accordions) {
         /******** Content Setting **********/
-        const accordionContents = accordion.querySelectorAll('.content');
+        const accordionContents = accordion.querySelectorAll('.content')
         console.log(accordion.dataset)
-        let duration = accordion.dataset.duration;
+        let duration = accordion.dataset.duration
         console.log(duration)
 
         for (const accordionContent of accordionContents) {
-          
-          accordionContent.style.transitionDuration = duration
+          // console.log( accordionContent.style)
+          // accordionContent.style.transitionDuration = duration
 
-          // /**** for default value ****/
-          // // if (duration) {
-          // //   accordionContent.style.transitionDuration = duration;
-          // // }
-          // // else {
-          // //   accordionContent.style.transitionDuration = '.3s';
-          // // }
+          /**** for default value ****/
+          // if (duration) {
+          //   accordionContent.style.transitionDuration = duration;
+          // }
+          // else {
+          //   accordionContent.style.transitionDuration = '.5s';
+          // }
 
-          // /** with ternary operator **/
-          // // accordionContent.style.transitionDuration = duration ? duration : '.3s'
+          /** with ternary operator **/
+          // accordionContent.style.transitionDuration = duration ? duration : '.5s'
 
-          // /**
-          //  * new operators  =>  ?? and ?
-          //  *
-          //  * target = variable !== null or undefined ? variable : other value
-          //  * target = variable ?? other value
-          //  *
-          //  * if(object !== null or undefned)
-          //  * {
-          //  *    target = object.member
-          //  * }
-          //  *
-          //  * target = object?.member
-          //  */
-          // accordionContent.style.transitionDuration = duration ?? '.3s';
+          /**
+           * new operators  =>  ?? and ?.
+           *
+           * target = variable !== null or undefined ? variable : other value
+           * target = variable ?? other value
+           *
+           * if(object !== null or undefned)
+           * {
+           *    target = object.member
+           * }
+           *
+           * target = object.member
+           */
+
+          // let car = { type: 'Fiat', model: '500', color: 'white' }
+          // console.log(car?.type)
+
+          // car = undefined
+          // console.log(car?.type)
+
+          accordionContent.style.transitionDuration = duration ?? '.5s'
         }
-        /******** End ofContent Setting **********/
+        /******** End of Content Setting **********/
 
         /**** Titles Setting ************/
-        const accordionTitles = accordion.querySelectorAll('.title');
+        const accordionTitles = accordion.querySelectorAll('.title')
 
         for (const accordionTitle of accordionTitles) {
           /***
            * onclick Event for every title
-          */
+           */
           accordionTitle.onclick = function () {
-            this.classList.toggle('active');
-            const nextContent = this.nextElementSibling;
+            this.classList.toggle('active')
+            const nextContent = this.nextElementSibling
 
             // console.log(nextContent.style.height)
 
@@ -250,43 +263,43 @@
               /*** روش دوم **/
               // nextContent.style.removeProperty('height');
             } else {
-              let height = nextContent.scrollHeight;
+              let height = nextContent.scrollHeight
               // console.log(height);
 
-              nextContent.style.height = height + 'px';
+              nextContent.style.height = height + 'px'
             }
-          };
+          }
           /** end of onclick event */
 
           /************/
           // console.log(accordionTitle.classList.contains('active'))
           if (accordionTitle.classList.contains('active')) {
-            const nextContent = accordionTitle.nextElementSibling;
+            const nextContent = accordionTitle.nextElementSibling
             // console.log(nextContent);
-            let height = nextContent.scrollHeight;
-            nextContent.style.height = height + 'px';
+            let height = nextContent.scrollHeight
+            nextContent.style.height = height + 'px'
           }
           /******* End of Title Setting *************/
         }
       }
 
-      /******* test ? ******/
+      /******* test ?. ******/
       const showFirstName = function (person) {
         // console.log(person.firstName);
-        
+
         // if(person){
         //   console.log(person.firstName)
         // }
 
-        console.log(person?.firstName);
-      };
+        console.log(person?.firstName)
+      }
 
       const student = {
         firstName: 'Emad',
-      };
+      }
 
-      showFirstName(student);
-      showFirstName();
+      showFirstName(student)
+      showFirstName()
     </script>
   </body>
 </html>

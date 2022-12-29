@@ -22,58 +22,59 @@
     </style>
   </head>
   <body>
-    <button id="btn1">Start Animation</button>
+    <button id="btn1">getComputedStyle</button>
     <button id="btn2">Start Animation 2</button>
     <button id="btn3">Start Animation 2</button>
 
     <div id="div1" class="bg-green"></div>
 
     <script>
-      const div = document.getElementById('div1');
-      document.getElementById('btn1').onclick = function() {
+      const div = document.getElementById('div1')
+      document.getElementById('btn1').onclick = function () {
         // console.log(div.style.backgroundColor)
         /**
          * getComputedStyle(elt: Element, pseudoElt?: string): CSSStyleDeclaration
-        */
-      //  console.log(getComputedStyle(div))
-      //  console.log(getComputedStyle(div).backgroundColor)
-      //  console.log(getComputedStyle(div).left)
+         */
+        let computedStyleDiv = getComputedStyle(div)
+        //  console.log(computedStyleDiv)
+        //  console.log(computedStyleDiv.backgroundColor)
+         console.log(computedStyleDiv.left)
 
-        let left = parseFloat(getComputedStyle(div).left);
-        div.style.left = left + 1 + 'px'
+        let left = parseFloat(computedStyleDiv.left)
+        div.style.left = left + 5 + 'px'
       }
 
       document.getElementById('btn2').onclick = function () {
-        div.style.left = 0;
-        
-        const anim1 = setInterval(function () {
-          let left = parseFloat(getComputedStyle(div).left);
-          div.style.left = left + 20 + 'px';
+        div.style.left = 0
 
-          if (left >= 500) clearInterval(anim1);
-        }, 10);
-      };
+        const anim1 = setInterval(function () {
+          let left = parseFloat(getComputedStyle(div).left)
+          div.style.left = left + 20 + 'px'
+
+          if (left >= 500) clearInterval(anim1)
+        }, 17)
+      }
 
       document.getElementById('btn3').onclick = function () {
-        let startLeft = 600;
-        let endLeft = 300;
-        let duration = 5000;
+        let startLeft = 600
+        let endLeft = 300
+        let duration = 5000
         /* animation */
-        const pace = 10;
-        let frameCount = duration / pace;
-        let stepChange = (endLeft - startLeft) / frameCount;
+        const pace = 16
+        let frameCount = duration / pace
+        let stepChange = (endLeft - startLeft) / frameCount
 
-        div.style.left = startLeft + 'px';
+        div.style.left = startLeft + 'px'
         const anim1 = setInterval(function () {
-          let left = parseFloat(getComputedStyle(div).left);
-          div.style.left = left + stepChange + 'px';
+          let left = parseFloat(getComputedStyle(div).left)
+          div.style.left = left + stepChange + 'px'
           if (stepChange > 0) {
-            if (left >= endLeft) clearInterval(anim1);
+            if (left >= endLeft) clearInterval(anim1)
           } else {
-            if (left <= endLeft) clearInterval(anim1);
+            if (left <= endLeft) clearInterval(anim1)
           }
-        }, pace);
-      };
+        }, pace)
+      }
     </script>
   </body>
 </html>
