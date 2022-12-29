@@ -174,7 +174,6 @@
         </div>
       </div>
       <ul class="invalid">
-
       </ul>
       <div class="row">
         <button type="submit">Add</button>
@@ -195,22 +194,26 @@
         this.nextElementSibling.type = 'password';
       };
       document.querySelector('.form-wrapper').onsubmit = function (e) {
-       
+        e.preventDefault()
+
         // console.log(document.forms);
         // console.log(document.forms[0]);
         // console.log(document.forms[1]);
         // console.log(document.forms['student-form']);
         // console.log(document.forms['search-form']);
+
         // console.log(document.forms['student-form'][1]);
         // console.log(document.forms['student-form'][3]);
+
         // console.log(document.forms['student-form']['fname']);
         // console.log(document.forms['student-form']['lname']);
+        // console.log(document.forms['student-form']['lname'].value);
         // console.log(document.forms['student-form']['chk']);
         // console.log(document.forms['student-form']['chk'].checked);
 
        
         if(!isValidate()){
-          e.preventDefault()
+          // e.preventDefault()
           return;
         }
 
@@ -220,19 +223,32 @@
       const isValidate = function () {
 
         const form = document.forms['student-form'];
-        const invalidList = document.querySelector('ul.invalid')
+        const invalidList = form.querySelector('ul.invalid')
+        const invalidSpans = form.querySelectorAll('span.invalid')
 
+        /* clear error list */
         invalidList.innerHTML = ''
 
+        /* clear errro spans */
+        invalidSpans.forEach(function(elm){
+          elm.innerHTML = ''
+        })
+
         // return form.checkValidity()  // return true if form is valid else false
+        // if(!form.checkValidity()){
+        //   alert('Form is not valid')
+        //   return false;
+        // }
 
         let isValidate = true
         for (const input of form) {
           // console.log(input);
-          // console.log(input.dataset);
+          // console.log(input.dataset.errorMessage);
+
           if (!input.checkValidity()) {
             // input.nextElementSibling.innerHTML = input.validationMessage;
-            // input.nextElementSibling.innerHTML = input.dataset.errorMessage;
+
+            input.nextElementSibling.innerHTML = input.dataset.errorMessage;
             invalidList.innerHTML += `<li>${input.dataset.errorMessage}</li>`
             isValidate = false;
           }
