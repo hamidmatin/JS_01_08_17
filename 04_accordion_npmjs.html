@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/accordion-js@3.3.2/dist/accordion.min.css" />
+    <style>
+        .is-active {
+            background-color: greenyellow;
+        }
+        .is-active .ac-trigger {
+            color: red !important;
+
+        }
+    </style>
+  </head>
+  <body>
+    <div class="accordion-container">
+      <div class="ac">
+        <h2 class="ac-header">
+          <button type="button" class="ac-trigger">Lorem ipsum dolor sit amet.</button>
+        </h2>
+        <div class="ac-panel">
+          <p class="ac-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+
+      <div class="ac">
+        <h2 class="ac-header">
+          <button type="button" class="ac-trigger">Lorem ipsum dolor sit amet.</button>
+        </h2>
+        <div class="ac-panel">
+          <p class="ac-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+
+      <div class="ac">
+        <h2 class="ac-header">
+          <button type="button" class="ac-trigger">Lorem ipsum dolor sit amet.</button>
+        </h2>
+        <div class="ac-panel">
+          <p class="ac-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/accordion-js@3.3.2/dist/accordion.min.js"></script>
+    <script>
+      // new Accordion('.accordion-container');
+
+      new Accordion('.accordion-container', {
+        duration: 400,
+        showMultiple: true,
+        onOpen: function (currentElement) {
+          console.log('On Open')
+          console.log(currentElement)
+        },
+        beforeOpen: function (currentElement) {
+          console.log('Before Open')
+        },
+      })
+    </script>
+  </body>
+</html>

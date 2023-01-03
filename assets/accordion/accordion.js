@@ -1,5 +1,30 @@
-
 const accordion = function (options) {
+  /*
+    راه اول
+
+    let source = {
+      prop1: value1,
+      prop2: value2, 
+      ...
+    }
+
+    let target = {}
+
+    Object.assign(target, source, source, ...): object  => copy of object and merge
+
+
+    راه دوم
+
+    let source = {
+      prop1: value1,
+      prop2: value2, 
+      ...
+    }
+
+    let target = Object.assign({}, source, source, ...):
+
+  */
+
   /**
    * set default paraeters
    */
@@ -9,6 +34,8 @@ const accordion = function (options) {
     type: 'single',
   };
 
+  
+
   const opts = Object.assign({}, defs, options)
 
   // console.log(opts)
@@ -17,8 +44,20 @@ const accordion = function (options) {
   // console.log(defs)
 
   /**
+   * Description Line 1
+   * Description Line 1
+   * Description Line 1
+   * 
+   * @param {type of parameter} parameterName: description of parameter
+   * @param {type of parameter} parameterName: description of parameter
+   * @param {type of parameter} parameterName: description of parameter
+   */
+
+
+
+  /**
    * Collapse content Element
-   * @params content: HTMLElemnt = content elemnt for collapse
+   * @param {HTMLElement} content: content elemnt for collapse
    */
   const collapseContent = function (content) {
     content.style.height = null;
@@ -29,12 +68,11 @@ const accordion = function (options) {
    * @param {HTMLElement} content 
    */
   const expandContent = function (content) {
-    let height = content.scrollHeight;
-    content.style.height = height + 'px';
+    content.style.height = content.scrollHeight + 'px';
   };
 
   /**
-   * 
+   * Toggle Expand or Collapse Content with transition
    * @param {HTMLElement} content 
    */
   const toggleCollapse = function (content) {
@@ -56,7 +94,7 @@ const accordion = function (options) {
     for (const accordionContent of accordionContents) {
       accordionContent.style.transitionDuration = opts.duration;
     }
-    /******** End ofContent Setting **********/
+    /******** End of Content Setting **********/
 
     /**** Titles Setting ************/
     const accordionTitles = accordion.querySelectorAll('.title');
@@ -67,6 +105,7 @@ const accordion = function (options) {
           const activeTitle = accordion.querySelector('.title.active');
           /* remove active */
           activeTitle.classList.remove('active');
+   
           collapseContent(activeTitle.nextElementSibling);
 
           this.classList.add('active');
@@ -87,3 +126,4 @@ const accordion = function (options) {
     }
   }
 };
+
