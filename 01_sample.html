@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style-cd.css">
+  </head>
+  <body>
+    <button id="show-artists">Show Artists</button>
+    <button id="show-CD-info">Show CD Information</button>
+    <div id="div1">
+        <!-- <div class="table">
+            <div class="row">
+                <div class="title header">Title</div>
+                <div class="artist header" >Artist</div>
+                <div class="country header">Country</div>
+                <div class="price header">Price</div>
+                <div class="year header">Year</div>
+            </div>
+            <div class="row">
+                <div class="title ">Title</div>
+                <div class="artist " >Artist</div>
+                <div class="country ">Country</div>
+                <div class="price ">Price</div>
+                <div class="year ">Year</div>
+            </div>
+        </div> -->
+    </div>
+
+    <script>
+      document.getElementById('show-artists').onclick = function () {
+        const xhttp = new XMLHttpRequest()
+        xhttp.onloadstart = function (e) {
+          console.log(`load start `, e)
+        }
+        xhttp.onloadend = function (e) {
+          console.log(`load end `, e)
+        }
+        xhttp.onload = function (e) {
+          let txt = ''
+          console.log(`load `, e)
+          console.log(this.responseXML)
+          const xmlDoc = this.responseXML
+          // const artists = xmlDoc.getElementsByTagName('ARTIST')
+          const artists = xmlDoc.querySelectorAll('ARTIST')
+          console.log(artists)
+
+          // روش اول
+          // for(let i = 0; i < artists.length; i++){
+          //     // console.log(artists[i])
+          //     // console.log(artists[i].innerHTML)
+          //     // console.log(artists[i].childNodes)
+          //     console.log(artists[i].childNodes[0].nodeValue)
+          //   txt += artist.innerHTML + '<br>'
+          // }
+
+          // روش دوم
+          // for (const artist of artists) {
+          //     // console.log(artist)
+          //     console.log(artist.innerHTML)
+          //   txt += artist.innerHTML + '<br>'
+          // }
+
+          // روش سوم
+          artists.forEach(function (artist) {
+            // console.log(artist)
+            // console.log(artist.innerHTML)
+            txt += artist.innerHTML + '<br>'
+          })
+
+          document.getElementById('div1').innerHTML = txt
+        }
+        xhttp.onprogress = function (e) {
+          console.log('progress', e)
+        }
+
+        xhttp.open('GET', '/data/cd_catalog.xml', true)
+        xhttp.send()
+      }
+
+      document.getElementById('show-CD-info').onclick = function () {
+        const xhttp = new XMLHttpRequest()
+        xhttp.onload = function () {
+
+
+
+          const CDs = convetXML2Object(this.responseXML)
+
+          CDs.sort(function(cd1, cd2){
+            return cd1.price - cd2.price
+          })
+          showCDInfo(CDs)
+        }
+
+        xhttp.open('GET', '/data/cd_catalog.xml', true)
+        xhttp.send()
+      }
+
+      const CDInfo = function(title, artist, country, price, year){
+        this.title = title.trim()
+        this.artist = artist.trim()
+        this.country = country.trim()
+        this.price = parseFloat(price)
+        this.year = parseFloat(year)
+      }
+
+      const convetXML2Object = function(xmlDoc){
+        const CDsXML = xmlDoc.querySelectorAll('CD')
+        const cds = []
+
+        for(const CDXML of CDsXML){
+            
+            const title = CDXML.querySelector('TITLE').innerHTML
+            const artist = CDXML.querySelector('ARTIST').innerHTML
+            const country = CDXML.querySelector('COUNTRY').innerHTML
+            const company = CDXML.querySelector('COMPANY').innerHTML
+            const price = CDXML.querySelector('PRICE').innerHTML
+            const year = CDXML.querySelector('YEAR').innerHTML
+            
+            const cd = new CDInfo(title, artist, country, price, year)
+            cds.push(cd)
+          }
+
+          return cds
+      }
+
+      const showCDInfo = function(CDs){
+        const table = document.createElement('div')
+        table.classList.add('table')
+
+        const header = `
+            <div class="row">
+                <div class="title header">Title</div>
+                <div class="artist header" >Artist</div>
+                <div class="country header">Country</div>
+                <div class="price header">Price</div>
+                <div class="year header">Year</div>
+            </div>
+        `
+        table.innerHTML = header
+
+        for (const CD of CDs) {
+            // console.log(CD)
+            const row = `
+                <div class="row">
+                    <div class="title">${CD.title}</div>
+                    <div class="artist">${CD.artist}</div>
+                    <div class="country">${CD.country}</div>
+                    <div class="price">${CD.price}</div>
+                    <div class="year">${CD.year}</div>
+                </div>
+            `
+
+            table.innerHTML += row
+        }
+        document.getElementById('div1').innerHTML = table.outerHTML
+      }
+    </script>
+  </body>
+</html>

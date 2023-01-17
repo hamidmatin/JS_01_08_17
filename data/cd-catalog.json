@@ -1,0 +1,184 @@
+[
+    {
+        "title": "Picture book",
+        "artist": "Simply Red",
+        "country": "EU",
+        "price": 7.2,
+        "year": 1985
+    },
+    {
+        "title": "Midt om natten",
+        "artist": "Kim Larsen",
+        "country": "EU",
+        "price": 7.8,
+        "year": 1983
+    },
+    {
+        "title": "Red",
+        "artist": "The Communards",
+        "country": "UK",
+        "price": 7.8,
+        "year": 1987
+    },
+    {
+        "title": "Soulsville",
+        "artist": "Jorn Hoel",
+        "country": "Norway",
+        "price": 7.9,
+        "year": 1996
+    },
+    {
+        "title": "Bridge of Spies",
+        "artist": "T'Pau",
+        "country": "UK",
+        "price": 7.9,
+        "year": 1987
+    },
+    {
+        "title": "The dock of the bay",
+        "artist": "Otis Redding",
+        "country": "USA",
+        "price": 7.9,
+        "year": 1968
+    },
+    {
+        "title": "Sylvias Mother",
+        "artist": "Dr.Hook",
+        "country": "UK",
+        "price": 8.1,
+        "year": 1973
+    },
+    {
+        "title": "Tupelo Honey",
+        "artist": "Van Morrison",
+        "country": "UK",
+        "price": 8.2,
+        "year": 1971
+    },
+    {
+        "title": "Unchain my heart",
+        "artist": "Joe Cocker",
+        "country": "USA",
+        "price": 8.2,
+        "year": 1987
+    },
+    {
+        "title": "Maggie May",
+        "artist": "Rod Stewart",
+        "country": "UK",
+        "price": 8.5,
+        "year": 1990
+    },
+    {
+        "title": "When a man loves a woman",
+        "artist": "Percy Sledge",
+        "country": "USA",
+        "price": 8.7,
+        "year": 1987
+    },
+    {
+        "title": "For the good times",
+        "artist": "Kenny Rogers",
+        "country": "UK",
+        "price": 8.7,
+        "year": 1995
+    },
+    {
+        "title": "The very best of",
+        "artist": "Cat Stevens",
+        "country": "UK",
+        "price": 8.9,
+        "year": 1990
+    },
+    {
+        "title": "Stop",
+        "artist": "Sam Brown",
+        "country": "UK",
+        "price": 8.9,
+        "year": 1988
+    },
+    {
+        "title": "Private Dancer",
+        "artist": "Tina Turner",
+        "country": "UK",
+        "price": 8.9,
+        "year": 1983
+    },
+    {
+        "title": "Hide your heart",
+        "artist": "Bonnie Tyler",
+        "country": "UK",
+        "price": 9.9,
+        "year": 1988
+    },
+    {
+        "title": "Greatest Hits",
+        "artist": "Dolly Parton",
+        "country": "USA",
+        "price": 9.9,
+        "year": 1982
+    },
+    {
+        "title": "Eros",
+        "artist": "Eros Ramazzotti",
+        "country": "EU",
+        "price": 9.9,
+        "year": 1997
+    },
+    {
+        "title": "Big Willie style",
+        "artist": "Will Smith",
+        "country": "USA",
+        "price": 9.9,
+        "year": 1997
+    },
+    {
+        "title": "Pavarotti Gala Concert",
+        "artist": "Luciano Pavarotti",
+        "country": "UK",
+        "price": 9.9,
+        "year": 1991
+    },
+    {
+        "title": "Still got the blues",
+        "artist": "Gary Moore",
+        "country": "UK",
+        "price": 10.2,
+        "year": 1990
+    },
+    {
+        "title": "1999 Grammy Nominees",
+        "artist": "Many",
+        "country": "USA",
+        "price": 10.2,
+        "year": 1999
+    },
+    {
+        "title": "Romanza",
+        "artist": "Andrea Bocelli",
+        "country": "EU",
+        "price": 10.8,
+        "year": 1996
+    },
+    {
+        "title": "Empire Burlesque",
+        "artist": "Bob Dylan",
+        "country": "USA",
+        "price": 10.9,
+        "year": 1985
+    },
+    {
+        "title": "One night only",
+        "artist": "Bee Gees",
+        "country": "UK",
+        "price": 10.9,
+        "year": 1998
+    },
+    {
+        "title": "Black angel",
+        "artist": "Savage Rose",
+        "country": "EU",
+        "price": 10.9,
+        "year": 1995
+    }
+]

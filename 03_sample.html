@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/style-cd.css">
+  </head>
+  <body>
+    <button id="show-CD-info">Show CD Information</button>
+    <div id="div1"></div>
+
+    <script>
+      document.getElementById('show-CD-info').onclick = function () {
+        fetch('/data/cd-catalog.json')
+          .then((response) => response.json())
+          .then((CDs) => {
+            console.log(CDs)
+
+            CDs.sort(function (cd1, cd2) {
+              return cd1.price - cd2.price
+            })
+
+            showCDInfo(CDs)
+          })
+      }
+
+      const showCDInfo = function(CDs){
+        const table = document.createElement('div')
+        table.classList.add('table')
+
+        const header = `
+            <div class="row">
+                <div class="title header">Title</div>
+                <div class="artist header" >Artist</div>
+                <div class="country header">Country</div>
+                <div class="price header">Price</div>
+                <div class="year header">Year</div>
+            </div>
+        `
+        table.innerHTML = header
+
+        for (const CD of CDs) {
+            // console.log(CD)
+            const row = `
+                <div class="row">
+                    <div class="title">${CD.title}</div>
+                    <div class="artist">${CD.artist}</div>
+                    <div class="country">${CD.country}</div>
+                    <div class="price">${CD.price}</div>
+                    <div class="year">${CD.year}</div>
+                </div>
+            `
+
+            table.innerHTML += row
+        }
+        document.getElementById('div1').innerHTML = table.outerHTML
+      }
+    </script>
+  </body>
+</html>

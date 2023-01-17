@@ -1,0 +1,35 @@
+*{box-sizing: border-box;}
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.table {
+    width: 75%;
+    border: 1px solid #f1f1f1;
+    box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.628);
+    margin: 50px auto;
+}
+
+.title {
+    width: 30%;
+}
+.artist {
+    width: 20%;
+}
+.country {
+    width: 20%;
+}
+.price, .year {
+    width: 15%;
+}
+.title, .artist, .country, .price, .year {
+    padding: 8px 16px;
+}
+
+.header {
+    /* text-align: center; */
+    background-color: #555;
+    color: white;
+}
