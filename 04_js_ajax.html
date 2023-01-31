@@ -91,9 +91,9 @@
       .loading div {
         width: 300px;
         height: 300px;
-        border-radius: 50%;
         border: 10px solid orangered;
         border-bottom-color: transparent;
+        border-radius: 50%;
         animation: loading 1s infinite linear;
       }
 
@@ -104,6 +104,15 @@
         100% {
           transform: rotate(360deg);
         }
+      }
+
+      .postBt {
+        text-decoration: none;
+        display: inline-block;
+        padding: 4px 8px;
+        margin-top: 8px;
+        background-color: #ccc;
+        color: black;
       }
     </style>
   </head>
@@ -119,6 +128,8 @@
       </ul>
     </nav>
     <main></main>
+
+    <button id="test">Test</button>
     <script>
       const setActiveNavLink = function (currentItem) {
         const navLinks = document.querySelectorAll('nav a');
@@ -168,6 +179,7 @@
       const showUserPostByParam = function(id){
         console.log(id)
         
+        showLoading()
         /***** ajax ******/
         const xhttp = new XMLHttpRequest();
         xhttp.open('GET', 'https://jsonplaceholder.typicode.com/users/' + id + '/posts', true);
@@ -175,9 +187,14 @@
         xhttp.onload = function () {
           if (this.status === 200) {
             console.table(JSON.parse(this.responseText))
+            hideLoading()
           }
         };
         
+      }
+
+      document.getElementById('test').onclick = function(){
+        showUserPostByParam(10)
       }
       /****************/
       
@@ -185,11 +202,11 @@
       document.querySelector('nav .users').onclick = function (e) {
         // console.log(e)
         e.preventDefault();
-        showLoading();
-
+        
         setActiveNavLink(this);
-
-
+        
+        showLoading();
+        
         const xhttp = new XMLHttpRequest();
         xhttp.open('GET', 'https://jsonplaceholder.typicode.com/users', true);
         xhttp.send();
